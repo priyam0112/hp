@@ -1,0 +1,239 @@
+{% extends "headers.html" %}
+{% block content %}
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h1 class="text-center" style="font-family: 'Arial', sans-serif;"><b>Travel Itinerary Details</b></h1>
+                </div>
+            </div>
+            <form action="/" method="POST" class="form-inline">
+                <div class="form-group" >
+                    <label for="source"><b>From:</b></label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        name="source"
+                        id="source"
+                        placeholder="Enter your boarding point"
+                        required
+                    />
+                </div>
+                <div class="form-group">
+                    <label for="destination"><b>To:</b></label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        name="destination"
+                        id="destination"
+                        placeholder="Enter your destination"
+                        required
+                    />
+                </div>
+                <span class="form-group">
+                    <label for="date"><b>Travel Date:</b></label>
+                    <input type="date" class="form-control" name="date" id="date" required />
+                    <label for="return"><b>Return Date:</b></label>
+                    <input type="date" class="form-control" name="return" id="return" required />
+                </span>
+                <button style="margin-top: 5px; padding: 4px; background-color: #14d12d;  border:none;" type="submit" class="btn btn-primary">Submit</button>
+                <div class="container d-flex justify-content-center align-items-center">
+                    <div class="text-center">
+                        <img id="loading" style="display: none;" src="{{url_for('static', filename='loading.gif')}}" alt="Loading..." />
+                    </div>
+                </div>
+            </form>
+
+            <!-- Icons Section -->
+            <div class="icon-section d-flex justify-content-around my-4">
+              <div class="tmABo e u c text-center">
+                  <div class="NeIOs u j icon-wrapper">
+                      <svg viewBox="0 0 24 24" width="24px" height="24px" class="d Vb UmNoP">
+                          <path fill-rule="evenodd" clip-rule="evenodd" d="M12.53 5.116a5.27 5.27 0 0 1-3.118-3.118c-.108-.294-.534-.294-.642 0a5.24 5.24 0 0 1-3.115 3.118c-.294.108-.294.534 0 .642a5.27 5.27 0 0 1 3.118 3.118c.108.294.534.294.642 0a5.27 5.27 0 0 1 3.118-3.118c.294-.108.294-.534 0-.642zm1.735-.418a.746.746 0 0 0 0 1.493c3.056 0 5.528 2.45 5.528 5.401 0 1.549-.806 3.252-2.05 4.952-1.095 1.495-2.404 2.828-3.468 3.882-1.07-1.054-2.399-2.401-3.503-3.91-1.234-1.69-2.033-3.382-2.033-4.924a.746.746 0 1 0-1.493 0c0 2.019 1.024 4.029 2.32 5.804 1.299 1.774 2.872 3.32 3.98 4.407l.04.04.16.16a.746.746 0 0 0 1.048.01l.15-.146.02-.02.053-.056.003-.002c1.102-1.09 2.645-2.613 3.927-4.362 1.306-1.785 2.339-3.808 2.339-5.835 0-3.803-3.168-6.894-7.021-6.894m-1.02 5.244a1.266 1.266 0 0 1 1.647.666 1.22 1.22 0 0 1-.678 1.599 1.266 1.266 0 0 1-1.647-.666 1.22 1.22 0 0 1 .679-1.6m-.566-1.389c1.397-.57 3.01.077 3.596 1.475a2.72 2.72 0 0 1-1.495 3.568c-1.397.57-3.01-.078-3.596-1.476a2.717 2.717 0 0 1 1.495-3.567M5.555 7.17a3.76 3.76 0 0 0 2.228 2.227h.002c.21.077.21.382 0 .459a3.77 3.77 0 0 0-2.228 2.227c-.077.21-.38.21-.458 0a3.77 3.77 0 0 0-2.227-2.227c-.21-.077-.21-.382 0-.459A3.74 3.74 0 0 0 5.097 7.17c.077-.21.381-.21.458 0"></path>
+                      </svg>
+                  </div>
+                  Get personalised recs with AI
+              </div>
+              <div class="tmABo e u c text-center">
+                  <div class="NeIOs u j icon-wrapper">
+                      <svg viewBox="0 0 24 24" width="24px" height="24px" class="d Vb UmNoP">
+                          <path fill-rule="evenodd" clip-rule="evenodd" d="M3.798 5.166A5.77 5.77 0 0 1 7.72 3.63c1.455 0 2.857.548 3.922 1.536l.005.005.341.322.332-.317a5.77 5.77 0 0 1 3.928-1.54c1.458 0 2.862.55 3.928 1.54l.004.004c1.093 1.032 1.598 2.324 1.569 3.662-.03 1.323-.579 2.643-1.5 3.785-.884 1.096-2.85 2.943-4.547 4.478a185 185 0 0 1-3.153 2.785l-.069.059-.489-.569.489.569-.485.416-.488-.412a102 102 0 0 1-7.75-7.288l-.021-.021-.02-.023c-1.725-2.115-2.203-5.32.08-7.453zm8.19 13.226.472-.412a184 184 0 0 0 2.236-1.988c1.72-1.556 3.59-3.32 4.385-4.306.757-.939 1.147-1.948 1.168-2.877.02-.912-.313-1.795-1.097-2.536a4.27 4.27 0 0 0-2.904-1.138c-1.08 0-2.117.407-2.903 1.136l-1.35 1.292-1.375-1.3a4.27 4.27 0 0 0-2.9-1.133 4.27 4.27 0 0 0-2.901 1.135c-1.507 1.408-1.353 3.659.042 5.385a101 101 0 0 0 7.127 6.742"></path>
+                      </svg>
+                  </div>
+                  Save hotels, restaurants, and more
+              </div>
+              <div class="tmABo e u c text-center">
+                  <div class="NeIOs u j icon-wrapper">
+                      <svg viewBox="0 0 24 24" width="24px" height="24px" class="d Vb UmNoP"><path fill-rule="evenodd" clip-rule="evenodd" d="m9.03 3.09 6 2 6.72-1.68v15.546l-6.78 1.695L9 18.66l-6.75 2.25V4.784zm.72 14.24 4.5 1.5v-5.42l-4.5-1.5zm-1.5-7.022-4.5 1.312V5.956l4.5-1.125zm1.5-5.397v5.418l4.5 1.5V6.411zm6 1.545v5.453l4.5-1.125V5.331zm4.5 5.875-4.5 1.125v5.453l4.5-1.125zm-16.5.852 4.5-1.313v5.46l-4.5 1.5z"></path></svg>
+                  </div>
+                  See your saves on your custom map
+              </div>
+              <div class="tmABo e u c text-center">
+                  <div class="NeIOs u j icon-wrapper">
+                      <svg viewBox="0 0 24 24" width="24px" height="24px" class="d Vb UmNoP"><path fill-rule="evenodd" clip-rule="evenodd" d="M8 4.75a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3m-3 1.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0m11 .5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3m-3 1.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0m-2.557 10.108c0-1.45-1.09-2.58-2.443-2.58-1.352 0-2.443 1.131-2.443 2.58v.693h4.886zm1.5 1.193v-1.886c0-2.217-1.674-4.08-3.943-4.08s-3.943 1.863-3.943 4.08v1.886H2v-1.886c0-2.817 2.127-5.082 4.943-5.082 1.195 0 2.303.397 3.154 1.063a5.441 5.441 0 0 1 3.154-1.063c2.816 0 4.943 2.265 4.943 5.082v1.886h-2.557z"></path></svg>
+                  </div>
+                  Find friends who love to travel
+              </div>
+          </div>
+
+
+          <div class="text-center my-4" style="margin-top: 40px; margin-bottom: 40px;">
+    <div class="xTbGW c" style="text-align: center; margin-bottom: 20px;">
+        <h1 class="biGQs _P fiohW izyXJ" style="font-weight: bold; font-family: 'Arial', sans-serif; font-size: 52px; color: #007a33; margin-top: 100px ; margin-bottom:40px;">Personalise your travel planning with Trips</h1>
+        <div class="biGQs _P pZUbB KxBGd" style="font-family: 'Arial', sans-serif; font-size: 18px; color: #686767; max-width: 800px; margin: auto;">
+            Now there’s two ways to plan your trip—use AI or search on your own. Either way, you’ve got more than 8 million spots to discover, with over one billion traveller reviews and opinions to guide you.
+        </div>
+    </div>
+
+    <div style="display: flex; justify-content: center;">
+        <div style="margin: 20px; background-color: #dcefd7; padding: 20px; border-radius: 10px;">
+            <h2 style="font-weight: bold; font-family: 'Arial', sans-serif; font-size: 28px; color: #007a33; text-align: center;">Kerala</h2>
+            <img src="{{ url_for('static', filename='d6.png') }}" alt="Kerala" style="width: 550px; height: auto;" />
+            <p style="margin-top: 10px;">
+                Kerala, known as 'God's Own Country,' offers stunning <a href="https://www.keralatourism.org/" target="_blank">backwaters</a> and lush greenery.<br>
+                Explore the rich cultural heritage in cities like <a href="https://en.wikipedia.org/wiki/Kochi" target="_blank">Kochi</a> and <a href="https://en.wikipedia.org/wiki/Thiruvananthapuram" target="_blank">Thiruvananthapuram</a>.<br>
+                Enjoy a peaceful stay in traditional <a href="https://www.keralatourism.org/houseboat/" target="_blank">houseboats</a>.<br>
+                The beautiful <a href="https://en.wikipedia.org/wiki/Western_Ghats" target="_blank">Western Ghats</a> offer breathtaking views and rich biodiversity.<br>
+                Don't miss the vibrant <a href="https://www.keralatourism.org/festival/" target="_blank">festivals</a> that showcase the local culture.<br>
+            </p>
+        </div>
+        <div style="margin: 20px; background-color: #d5e9d0; padding: 20px; border-radius: 10px;">
+            <h2 style="font-weight: bold; font-family: 'Arial', sans-serif; font-size: 28px; color: #007a33; text-align: center;">Kashmir</h2>
+            <img src="{{ url_for('static', filename='d3.png') }}" alt="Kashmir" style="width: 550px; height: auto;" />
+            <p style="margin-top: 10px;">
+                Kashmir, the 'Paradise on Earth,' is famous for its <a href="https://en.wikipedia.org/wiki/Dal_Lake" target="_blank">Dal Lake</a> and mesmerizing landscapes.<br>
+                Experience the beauty of the <a href="https://en.wikipedia.org/wiki/Himalayas" target="_blank">Himalayas</a> with serene snow-capped peaks.<br>
+                Take a <a href="https://www.lonelyplanet.com/india/kashmir" target="_blank">Shikara ride</a> for a unique experience.<br>
+                Visit the enchanting <a href="https://en.wikipedia.org/wiki/Gulmarg" target="_blank">Gulmarg</a>, known for its skiing resorts and meadows.<br>
+                Discover the rich history and culture at the <a href="https://en.wikipedia.org/wiki/Mughal_Gardens,_Srinagar" target="_blank">Mughal Gardens</a>.<br>
+            </p>
+        </div>
+    </div>
+    <p style="font-weight: bold; font-family: 'Arial', sans-serif; font-size: 24px; color: #000000; text-align: center; margin-top: 20px;">and many more.....</p>
+</div>
+
+        
+        
+        
+        
+        
+        
+        
+        </div>
+        
+        </div>
+    </main>
+    
+    <!-- Share Icon -->
+    <div class="floating-container">
+        <div class="floating-button">
+            <i class="fa-solid fa-share-from-square"></i>
+        </div>
+        <!-- Elements -->
+        <div class="element-container">
+            <!-- Facebook -->
+            <a class="float-element" href="https://www.facebook.com" target="_blank"> 
+                <span>
+                    <i class="fa-brands fa-facebook"></i>
+                </span>
+            </a>
+
+            <!-- WhatsApp -->
+            <a class="float-element" href="https://api.whatsapp.com" target="_blank">
+                <span>
+                    <i class="fa-brands fa-whatsapp"></i>
+                </span>
+            </a>
+
+            <!-- Twitter or X -->
+            <a class="float-element" href="https://twitter.com" target="_blank">
+                <span>
+                    <i class="fa-brands fa-x-twitter"></i>
+                </span>
+            </a>
+
+            <!-- LinkedIn -->
+            <a class="float-element" href="https://www.linkedin.com" target="_blank">
+                <span>
+                    <i class="fa-brands fa-linkedin"></i>
+                </span>
+            </a>
+
+            <!-- Telegram -->
+            <a class="float-element" href="https://t.me" target="_blank">
+                <span>
+                    <i class="fa-brands fa-telegram"></i>
+                </span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="jumbotron text-center text-white fixed-bottom" style="background-color: #ffffff">
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: #ffffff">
+            <p style="color: #000;">&copy; 2024 Copyright | By <a style="color: #52e23fd6; text-decoration: none;" href="#">Priyam</a></p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+    <script>
+        setTimeout(function () {
+            const alerts = document.querySelectorAll(".alert");
+
+            alerts.forEach(function (alert) {
+                alert.style.opacity = 0;
+            });
+
+            setTimeout(function () {
+                alerts.forEach(function (alert) {
+                    alert.style.display = "none";
+                });
+            }, 1000);
+        }, 5000);
+
+        document.querySelector('form').addEventListener('submit', function() {
+            document.getElementById('loading').style.display = 'block';
+        });
+    </script>
+
+    <style>
+        /* CSS for image hover effect */
+        .image-hover-effect img {
+            transition: transform 0.3s ease; /* Smooth transition for the hover effect */
+        }
+
+        .image-hover-effect img:hover {
+            transform: translateY(-10px); /* Moves the image up by 10 pixels */
+        }
+        /* .icon-section {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin-top: 20px;
+        } */
+
+        .icon-wrapper {
+        display: inline-block;
+        border: 2px solid #999898;
+        border-radius: 50%;
+        padding: 10px;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        /* justify-content: center;
+        align-items: center;*/
+        margin-left: 90px; 
+        margin-top: 10px;
+        margin-bottom: 10px;
+        } 
+
+        .tmABo {
+        display: inline-block;
+        text-align: center;
+        } 
+
+    </style>
+{% endblock %}

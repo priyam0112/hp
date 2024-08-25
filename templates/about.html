@@ -1,0 +1,80 @@
+{% extends "headers.html" %}
+{% block content %}
+
+<!-- Main Content -->
+<main class="bg-light bg-gradient" style="margin-top: 0;">
+  <h3 class="display-1 text-center" style="margin-top: 145px; font-size: 3rem ;"><b>About Us</b></h3>
+
+  <!-- Background Image Container -->
+  <div class="card border-primary" style="background-image: url('{{url_for('static',filename='d8.png')}}'); background-size: cover; background-position: center; border-radius: 10px; padding: 20px; color: #fff;">
+    
+    <div class="card-body" style="background-color: rgba(0, 0, 0, 0.6); border-radius: 10px; padding: 20px;">
+      <p class="card-text" style="text-align: justify; font-size: 1.2rem;">
+        Welcome to the ItineraryHub, your ultimate companion for creating personalized travel experiences. We are passionate about making travel planning as enjoyable and effortless as the journey itself. Whether you're a seasoned globetrotter or planning your first adventure, our platform is designed to cater to all your travel needs.
+      </p>
+      <p class="card-text" style="text-align: justify; font-size: 1.2rem;">
+        Our mission is to empower travelers by providing innovative and user-friendly solutions. By leveraging the latest technology, including artificial intelligence and big data, we ensure that you receive the most up-to-date and relevant travel information. Our platform not only helps you plan your trips but also provides real-time updates, budget management tools, and personalized recommendations.
+      </p>
+      <p class="card-text" style="text-align: justify; font-size: 1.2rem;">
+        Modern technology called for fast-tracking of decision making. To help travelers in the process, ItineraryHub platform ate a step forward. It combines artificial intelligence, data analysis, and user-friendly interfaces to deliver exceptional convenience and efficiency. Every step of your travel, from destination recommendation to real-time updates, budget management, and offline vive, we ensure precaution.
+      </p>
+      
+      <p class="card-text" style="text-align: justify; font-size: 1.2rem;">
+        Don't let your dream destination remain just that – a dream. Get started with the ItineraryHub now. Your dream vacation awaits!
+      </p>
+
+      <!-- Contact Details -->
+      <div class="contact-details mt-4">
+        <h4>Contact Us</h4>
+        <p>Email: <a href="mailto:info@ItinearyHub.com" style="color: #52e23fd6;">info@ItineraryHub.com</a></p>
+        <p>Phone: +1 234 567 890</p>
+        <p>Address: 123 Travel Lane, Wanderlust City, USA</p>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- Share Icon -->
+<div class="floating-container">
+  <div class="floating-button">
+    <i class="fa-solid fa-share-from-square"></i>
+  </div>
+  <!-- Elements -->
+  <div class="element-container">
+    <!-- Facebook -->
+    <a class="float-element" href="https://www.facebook.com" target="_blank">
+      <span><i class="fa-brands fa-facebook" style="color: #2c81d1d6;"></i></span>
+    </a>
+
+    <!-- WhatsApp -->
+    <a class="float-element" href="https://api.whatsapp.com" target="_blank">
+      <span><i class="fa-brands fa-whatsapp" style="color: #52e23fd6;"></i></span>
+    </a>
+
+    <!-- Twitter or X -->
+    <a class="float-element" href="https://twitter.com" target="_blank">
+      <span><i class="fa-brands fa-x-twitter" style="color: #000000d6;"></i></span>
+    </a>
+
+    <!-- LinkedIn -->
+    <a class="float-element" href="https://www.linkedin.com" target="_blank">
+      <span><i class="fa-brands fa-linkedin" style="color: #065bc4d6;"></i></span>
+    </a>
+
+    <!-- Telegram -->
+    <a class="float-element" href="https://t.me" target="_blank">
+      <span><i class="fa-brands fa-telegram" style="color: #010500d6;"></i></span>
+    </a>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="jumbotron text-center text-white fixed-bottom" style="background-color: #030303;">
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgb(255, 255, 255);">
+    <p style="color: #000;">&copy; 2024 Copyright | By <a style="color: #52e23fd6; text-decoration: none;" href="#">Priyam</a></p>
+  </div>
+</footer>
+{% endblock %}
+</body>
+</html>
